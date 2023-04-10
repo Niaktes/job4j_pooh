@@ -15,7 +15,19 @@ public class Req {
     }
 
     public static Req of(String content) {
-        return  new Req(null, null, null, null);
+        String[] text = content.split(System.lineSeparator());
+        String httpRequestType = text[0].substring(0, text[0].indexOf(" "));
+        String[] firstLine = text[0].substring(text[0].indexOf("/") + 1, text[0].indexOf(" HTTP")).split("/");
+        String poohMode = firstLine[0];
+        String sourceName = firstLine[1];
+        String param = "";
+        if ("POST".equals(httpRequestType)) {
+            param = text[text.length - 1];
+        }
+        if ("GET".equals(httpRequestType) && "topic".equals(poohMode)){
+            param = firstLine[firstLine.length - 1];
+        }
+        return  new Req(httpRequestType, poohMode, sourceName, param);
     }
 
     public String httpRequestType() {
