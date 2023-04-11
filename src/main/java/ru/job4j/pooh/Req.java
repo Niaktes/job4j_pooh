@@ -7,7 +7,7 @@ public class Req {
     private final String sourceName;
     private final String param;
 
-    public Req(String httpRequestType, String poohMode,String sourceName, String param) {
+    public Req(String httpRequestType, String poohMode, String sourceName, String param) {
         this.httpRequestType = httpRequestType;
         this.poohMode = poohMode;
         this.sourceName = sourceName;
@@ -24,7 +24,7 @@ public class Req {
         if ("POST".equals(httpRequestType)) {
             param = text[text.length - 1];
         }
-        if ("GET".equals(httpRequestType) && "topic".equals(poohMode)){
+        if ("GET".equals(httpRequestType) && "topic".equals(poohMode)) {
             param = firstLine[firstLine.length - 1];
         }
         return  new Req(httpRequestType, poohMode, sourceName, param);

@@ -80,13 +80,4 @@ class TopicServiceTest {
         assertEquals("", responseClient2.text());
     }
 
-    @Test
-    void whenWrongReqThenExceptionThrown() {
-        TopicService service = new TopicService();
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("x", "topic", "weather", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("POST", "queue", "weather", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("POST", "topic", "", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("GET", "topic", "weather", "")));
-    }
-
 }

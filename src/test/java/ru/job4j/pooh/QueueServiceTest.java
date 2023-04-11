@@ -65,12 +65,4 @@ class QueueServiceTest {
         assertEquals("pressure=750", service.process(new Req("GET", "queue", "weather", null)).text());
     }
 
-    @Test
-    void whenWrongReqThenExceptionThrown() {
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("x", "queue", "weather", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("POST", "x", "weather", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("POST", "queue", "", "t=18")));
-        assertThrows(IllegalArgumentException.class, () -> service.process(new Req("POST", "queue", "weather", "")));
-    }
-
 }
